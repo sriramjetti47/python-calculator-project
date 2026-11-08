@@ -1,0 +1,134 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #111827, #312e81);
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 360px;
+    background: #182235;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.header h2 {
+    font-size: 22px;
+}
+
+.header p {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.status {
+    color: #4ade80;
+    font-size: 11px;
+}
+
+.display {
+    background: #0f172a;
+    padding: 22px 15px;
+    border-radius: 15px;
+    text-align: right;
+    margin-bottom: 20px;
+    min-height: 105px;
+    overflow-wrap: anywhere;
+}
+
+#expression {
+    color: #94a3b8;
+    font-size: 20px;
+    min-height: 27px;
+}
+
+#result {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    height: 62px;
+    border: none;
+    border-radius: 13px;
+    background: #273449;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #3b4b64;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.special {
+    background: #475569;
+    color: #a5f3fc;
+}
+
+.operator {
+    background: #334b83;
+    color: #93c5fd;
+}
+
+.equal {
+    background: #2563eb;
+    color: white;
+}
+
+.equal:hover {
+    background: #1d4ed8;
+}
+
+.footer {
+    color: #64748b;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 22px;
+}
+
+@media (max-width: 400px) {
+    .calculator {
+        padding: 18px;
+    }
+
+    button {
+        height: 56px;
+    }
+}
