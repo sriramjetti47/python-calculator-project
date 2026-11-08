@@ -52,12 +52,30 @@
         <button class="equal" data-action="calculate">=</button>
     </div>
 
-    <p class="footer">Made with Python & Flask</p>
+    <!-- Calculation History -->
+<div class="history">
+
+    <div class="history-header">
+        <h3>Calculation History</h3>
+
+        <button class="clear-history" onclick="clearHistory()">
+            Clear
+        </button>
+    </div>
+
+    <div id="history-list">
+        <p class="empty-history">No calculations yet</p>
+    </div>
+
+</div>
+
+<p class="footer">Made with Python & Flask</p>
 
 </div>
 
 <script>
     let expression = "";
+    let calculationHistory = [];
 
     const expressionDisplay = document.getElementById("expression");
     const resultDisplay = document.getElementById("result");
@@ -85,6 +103,16 @@
             }
 
             const answer = data.result;
+            calculationHistory.unshift({
+    expression: expression,
+    result: answer
+});
+
+// Keep only the latest 8 calculations
+calculationHistory = calculationHistory.slice(0, 8);
+
+// Update history on screen
+displayHistory();
             resultDisplay.textContent =
                 Number(answer.toPrecision(12)).toString();
 
@@ -133,6 +161,33 @@
             updateDisplay();
         });
     });
+    // Display calculation history
+function displayHistory() {
+
+    const historyList = document.getElementById("history-list");
+
+    if (calculationHistory.length === 0) {
+        historyList.innerHTML =
+            '<p class="empty-history">No calculations yet</p>';
+        return;
+    }
+
+    historyList.innerHTML = calculationHistory.map(item => `
+        <div class="history-item">
+            <span>${item.expression} =</span>
+            <strong>${item.result}</strong>
+        </div>
+    `).join("");
+}
+
+
+// Clear calculation history
+function clearHistory() {
+
+    calculationHistory = [];
+
+    displayHistory();
+}
 
     // Keyboard support
     document.addEventListener("keydown", event => {
