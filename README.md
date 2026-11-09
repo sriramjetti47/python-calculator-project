@@ -36,7 +36,12 @@ python-calculator-project/
 ├── app.py                 # Flask application and calculation API
 ├── requirements.txt       # Python dependencies
 ├── .gitignore             # Files excluded from Git
-├── README.md              # Project documentation
+├── README.md              # Project overview and setup
+├── docs/
+│   └── deployment.md      # Step-by-step AWS EC2 deployment
+├── .github/
+│   └── workflows/
+│       └── tests.yml      # Automated tests with GitHub Actions
 ├── templates/
 │   └── index.html         # Calculator page and browser-side logic
 ├── static/
