@@ -147,6 +147,8 @@ sudo apt install -y git python3 python3-venv python3-pip nginx
 ### 3. Download and prepare the application
 
 ```bash
+mkdir -p ~/calculator-project
+cd ~/calculator-project
 git clone --branch feature/calculator-v2 https://github.com/sriramjetti47/python-calculator-project.git
 cd python-calculator-project
 python3 -m venv venv
@@ -172,8 +174,8 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/python-calculator-project
-ExecStart=/home/ubuntu/python-calculator-project/venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 app:app
+WorkingDirectory=/home/ubuntu/calculator-project/python-calculator-project
+ExecStart=/home/ubuntu/calculator-project/python-calculator-project/venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 app:app
 Restart=always
 
 [Install]
@@ -242,7 +244,7 @@ sudo systemctl restart nginx
 After pushing tested changes to the same Git branch:
 
 ```bash
-cd ~/python-calculator-project
+cd ~/calculator-project/python-calculator-project
 git pull origin feature/calculator-v2
 source venv/bin/activate
 pip install -r requirements.txt
