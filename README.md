@@ -105,6 +105,8 @@ python -m pytest -q
 
 ## AWS EC2 deployment (Ubuntu)
 
+For the complete step-by-step deployment procedure, see the [detailed AWS EC2 deployment guide](docs/deployment.md).
+
 The application was deployed on an Ubuntu EC2 instance with this request flow:
 
 ```text
